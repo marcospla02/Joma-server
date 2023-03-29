@@ -2,11 +2,11 @@ import express from "express";
 import cookieParser from "cookie-parser";
 import bodyParser from "body-parser";
 import morgan from "morgan";
+import "./db";
+import router from "./Routes/routes";
 
 const server = express();
 // server.use(express.json());
-
-server.name;
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
@@ -23,7 +23,7 @@ server.use((req, res, next) => {
   next();
 });
 
-// server.use("/", router);
+server.use("/", router);
 
 // Error catching endware.
 server.use((err: any, req: any, res: any, next: any) => {
