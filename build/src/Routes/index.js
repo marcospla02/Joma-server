@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.routes = exports.Users = exports.RouteCreateUser = exports.RouteCreateP = exports.Products = exports.PostImage = exports.Image = void 0;
+exports.routes = exports.deleteUser = exports.Users = exports.RouteCreateUser = exports.RouteCreateP = exports.Products = exports.PostImage = exports.Image = void 0;
 var Image_1 = require("./Image/Image");
 Object.defineProperty(exports, "Image", { enumerable: true, get: function () { return __importDefault(Image_1).default; } });
 var PostImage_1 = require("./Image/PostImage");
@@ -16,5 +16,7 @@ var RouteCreateUser_1 = require("./User/RouteCreateUser");
 Object.defineProperty(exports, "RouteCreateUser", { enumerable: true, get: function () { return __importDefault(RouteCreateUser_1).default; } });
 var Users_1 = require("./User/Users");
 Object.defineProperty(exports, "Users", { enumerable: true, get: function () { return __importDefault(Users_1).default; } });
+var deleteUser_1 = require("./User/deleteUser");
+Object.defineProperty(exports, "deleteUser", { enumerable: true, get: function () { return __importDefault(deleteUser_1).default; } });
 var routes_1 = require("./routes");
 Object.defineProperty(exports, "routes", { enumerable: true, get: function () { return __importDefault(routes_1).default; } });

@@ -4,4 +4,5 @@ export { default as Products } from "./Products/Products";
 export { default as RouteCreateP } from "./Products/RouteCreateP";
 export { default as RouteCreateUser } from "./User/RouteCreateUser";
 export { default as Users } from "./User/Users";
+export { default as deleteUser } from "./User/deleteUser";
 export { default as routes } from "./routes";

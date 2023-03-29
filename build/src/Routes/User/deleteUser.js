@@ -12,25 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const Controllers_1 = require("../../Controllers");
 const router = (0, express_1.Router)();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.delete("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const findUsers = yield (0, Controllers_1.getUsers)();
-        if (findUsers)
-            res.send(findUsers);
+        const { _id } = req.params;
+        const remove = yield (0, Controllers_1.deleteUser)(_id);
+        res.send(remove);
     }
     catch (error) {
         res.send(error.message);
-    }
-}));
-router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { _id } = req.params;
-        const body = req.body;
-        const updUser = yield (0, Controllers_1.updateUser)(_id, body);
-        res.send(updUser);
-    }
-    catch (error) {
-        res.status(404).send(error.message);
     }
 }));
 exports.default = router;

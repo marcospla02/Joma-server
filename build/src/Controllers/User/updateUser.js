@@ -9,28 +9,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const Controllers_1 = require("../../Controllers");
-const router = (0, express_1.Router)();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const db_1 = require("../../db");
+const updateUser = (_id, props) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const findUsers = yield (0, Controllers_1.getUsers)();
-        if (findUsers)
-            res.send(findUsers);
+        const update = yield db_1.User.findOneAndUpdate({ _id: _id }, props, {
+            new: true,
+            // upsert: true,
+        });
+        console.log("soy update:", update);
+        if (update === null || !update) {
+            throw new Error(`User ${_id} not found`);
+        }
+        else {
+            return update;
+        }
     }
-    catch (error) {
-        res.send(error.message);
+    catch (err) {
+        return err.message;
     }
-}));
-router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { _id } = req.params;
-        const body = req.body;
-        const updUser = yield (0, Controllers_1.updateUser)(_id, body);
-        res.send(updUser);
-    }
-    catch (error) {
-        res.status(404).send(error.message);
-    }
-}));
-exports.default = router;
+});
+exports.default = updateUser;
