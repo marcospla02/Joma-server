@@ -13,7 +13,6 @@ const db_1 = require("../../db");
 const deleteUser = (_id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const removeUser = yield db_1.User.findByIdAndDelete({ _id: _id });
-        console.log("soy remove user", removeUser);
         if (removeUser === null || !removeUser) {
             throw new Error(`User ${_id} not found`);
         }

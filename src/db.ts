@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import mongoose from "mongoose";
-import { User, Products, Image } from "./Models";
+import { User, Products, Image, Category } from "./Models";
 const { USER, PASS } = process.env;
 
 mongoose
@@ -11,4 +11,4 @@ mongoose
   .then(() => console.log("se conecto a la BBDD"))
   .catch((err) => console.log(err));
 
-export { User, Products, Image };
+export { User, Products, Image, Category };

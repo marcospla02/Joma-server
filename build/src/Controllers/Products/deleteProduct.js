@@ -9,29 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const express_1 = require("express");
-const Controllers_1 = require("../../Controllers");
-const router = (0, express_1.Router)();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const db_1 = require("../../db");
+const deleteProducts = (_id) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allImages = yield (0, Controllers_1.getImage)();
-        if (allImages === "No images found")
-            res.status(404).send("No images found");
-        else
-            res.send(allImages);
+        const findPrduct = yield db_1.Products.findById({ _id: _id });
+        if (findPrduct) {
+            yield db_1.Products.deleteOne({ _id: _id });
+            return { deletedId: _id };
+        }
+        else {
+            return `The product with id: '${_id}' was not found`;
+        }
     }
     catch (error) {
-        res.send(error.message);
+        return error.message;
     }
-}));
-router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { _id } = req.params;
-        const result = yield (0, Controllers_1.updateImage)(_id, req.body);
-        res.send(result);
-    }
-    catch (error) {
-        res.send(error.message);
-    }
-}));
-exports.default = router;
+});
+exports.default = deleteProducts;

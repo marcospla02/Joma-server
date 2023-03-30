@@ -1,15 +1,12 @@
 import { Router } from "express";
-import { getImage, updateImage } from "../../Controllers";
+import { getCategory, UpdateCtg } from "../../Controllers";
 
 const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const allImages = await getImage();
-
-    if (allImages === "No images found")
-      res.status(404).send("No images found");
-    else res.send(allImages);
+    const result = await getCategory();
+    res.send(result);
   } catch (error: any) {
     res.send(error.message);
   }
@@ -18,8 +15,10 @@ router.get("/", async (req, res) => {
 router.put("/:_id", async (req, res) => {
   try {
     const { _id } = req.params;
+    const { name } = req.body;
 
-    const result = await updateImage(_id, req.body);
+    const result = await UpdateCtg(_id, name);
+
     res.send(result);
   } catch (error: any) {
     res.send(error.message);

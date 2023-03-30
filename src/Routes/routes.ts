@@ -8,6 +8,11 @@ import {
   RouteCreateP,
   PostImage,
   deleteUser,
+  DeletePrd,
+  deleteImage,
+  Category,
+  RouteDltCtg,
+  RoutePostCtg,
 } from ".";
 
 const router = Router();
@@ -18,8 +23,14 @@ router.use("/deleteUser", deleteUser);
 
 router.use("/products", Products);
 router.use("/postPt", RouteCreateP);
+router.use("/deletePt", DeletePrd);
 
 router.use("/images", Image);
 router.use("/imgPost", PostImage);
+router.use("/dltImg", deleteImage);
+
+router.use("/category", Category);
+router.use("/dltCategory", RouteDltCtg);
+router.use("/createCategory", RoutePostCtg);
 
 export default router;

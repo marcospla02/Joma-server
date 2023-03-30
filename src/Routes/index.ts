@@ -1,5 +1,10 @@
+export { default as Category } from "./Category/Category";
+export { default as RouteDltCtg } from "./Category/RouteDltCtg";
+export { default as RoutePostCtg } from "./Category/RoutePostCtg";
 export { default as Image } from "./Image/Image";
 export { default as PostImage } from "./Image/PostImage";
+export { default as deleteImage } from "./Image/deleteImage";
+export { default as DeletePrd } from "./Products/DeletePrd";
 export { default as Products } from "./Products/Products";
 export { default as RouteCreateP } from "./Products/RouteCreateP";
 export { default as RouteCreateUser } from "./User/RouteCreateUser";

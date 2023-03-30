@@ -24,4 +24,16 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.send(error.message);
     }
 }));
+router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { _id } = req.params;
+        const body = req.body;
+        const updatePrt = yield (0, Controllers_1.updateProduct)(_id, body);
+        console.log("soy update:", updatePrt);
+        res.send(updatePrt);
+    }
+    catch (error) {
+        res.send(error.message);
+    }
+}));
 exports.default = router;

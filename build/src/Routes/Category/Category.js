@@ -14,11 +14,8 @@ const Controllers_1 = require("../../Controllers");
 const router = (0, express_1.Router)();
 router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allImages = yield (0, Controllers_1.getImage)();
-        if (allImages === "No images found")
-            res.status(404).send("No images found");
-        else
-            res.send(allImages);
+        const result = yield (0, Controllers_1.getCategory)();
+        res.send(result);
     }
     catch (error) {
         res.send(error.message);
@@ -27,7 +24,8 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { _id } = req.params;
-        const result = yield (0, Controllers_1.updateImage)(_id, req.body);
+        const { name } = req.body;
+        const result = yield (0, Controllers_1.UpdateCtg)(_id, name);
         res.send(result);
     }
     catch (error) {

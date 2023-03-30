@@ -5,7 +5,7 @@ const createUser = async (props: IntUsers) => {
   try {
     const create = await User.create({
       _id: props._id,
-      name: props.name,
+      name: props.name.toLowerCase(),
       favorites: props.favorites,
       cart: props.cart,
       admin: props.admin,

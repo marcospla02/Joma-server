@@ -13,7 +13,7 @@ const db_1 = require("../../db");
 const createProduct = (props) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newProduct = yield db_1.Products.create({
-            name: props.name,
+            name: props.name.toLowerCase(),
             description: props.description,
             price: props.price,
             stock: props.stock,
