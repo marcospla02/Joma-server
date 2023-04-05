@@ -3,7 +3,7 @@ import { Products } from "../../db";
 import { IntProducts } from "../../Interface/interfaces";
 
 const updateProduct = async (_id: string, body: IntProducts) => {
-  const { description, price, stock, enabled, image } = body;
+  const { description, price, stock, enabled, image, category } = body;
   let { name } = body;
 
   if (!ObjectId.isValid(_id))
@@ -34,6 +34,9 @@ const updateProduct = async (_id: string, body: IntProducts) => {
   if (image && typeof image !== "string")
     throw new Error("The image cannot be empty and must be a text type");
 
+  if (category && typeof category !== "string")
+    throw new Error("The category cannot be empty and must be a text type");
+
   try {
     const findPrduct = await Products.findById({ _id }); // use object literal
 
@@ -44,6 +47,7 @@ const updateProduct = async (_id: string, body: IntProducts) => {
       stock,
       image,
       enabled,
+      category,
     };
 
     if (findPrduct) {

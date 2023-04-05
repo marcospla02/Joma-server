@@ -10,6 +10,7 @@ const createProduct = async (props: IntProducts) => {
       stock: props.stock,
       enabled: props.enabled,
       image: props.image,
+      category: props.category,
     });
 
     return newProduct;

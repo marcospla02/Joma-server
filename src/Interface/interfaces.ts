@@ -1,8 +1,8 @@
 export interface IntUsers {
   _id: string;
   name: string;
-  favorites: [IntProducts];
-  cart: [IntProducts];
+  favorites: IntProducts[];
+  cart: IntProducts[];
   admin: boolean;
   picture: string;
 }
@@ -14,6 +14,7 @@ export interface IntProducts {
   price: number;
   enabled: boolean;
   image: IntImage;
+  category: string;
 }
 
 export interface IntImage {

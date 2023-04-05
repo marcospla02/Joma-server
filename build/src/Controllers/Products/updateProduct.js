@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongodb_1 = require("mongodb");
 const db_1 = require("../../db");
 const updateProduct = (_id, body) => __awaiter(void 0, void 0, void 0, function* () {
-    const { description, price, stock, enabled, image } = body;
+    const { description, price, stock, enabled, image, category } = body;
     let { name } = body;
     if (!mongodb_1.ObjectId.isValid(_id))
         throw new Error("No valid _id type provided for product!");
@@ -33,6 +33,8 @@ const updateProduct = (_id, body) => __awaiter(void 0, void 0, void 0, function*
         throw new Error("The enabled cannot be empty and must be a true or false value");
     if (image && typeof image !== "string")
         throw new Error("The image cannot be empty and must be a text type");
+    if (category && typeof category !== "string")
+        throw new Error("The category cannot be empty and must be a text type");
     try {
         const findPrduct = yield db_1.Products.findById({ _id }); // use object literal
         const update = {
@@ -42,6 +44,7 @@ const updateProduct = (_id, body) => __awaiter(void 0, void 0, void 0, function*
             stock,
             image,
             enabled,
+            category,
         };
         if (findPrduct) {
             const prdUpdate = yield db_1.Products.findByIdAndUpdate({ _id: _id }, update, {

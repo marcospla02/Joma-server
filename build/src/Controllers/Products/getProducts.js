@@ -19,7 +19,9 @@ function getProducts(options) {
         if (enabled)
             findOptions.enabled = enabled;
         try {
-            const findAllProducts = yield db_1.Products.find(findOptions).populate("image");
+            const findAllProducts = yield db_1.Products.find(findOptions)
+                .populate("image")
+                .populate("category");
             if (!findAllProducts.length)
                 throw new Error("Product not found");
             return findAllProducts;

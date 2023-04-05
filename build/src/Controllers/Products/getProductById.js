@@ -3,7 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../../db");
 function getProductById(productId) {
     try {
-        const findById = db_1.Products.findById({ _id: productId }).populate("image");
+        const findById = db_1.Products.findById({ _id: productId })
+            .populate("image")
+            .populate("category");
         if (!findById)
             return "The product with id " + productId + " does not exist";
         return findById;

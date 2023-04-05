@@ -2,7 +2,9 @@ import { Products } from "../../db";
 
 export default function getProductById(productId: string) {
   try {
-    const findById = Products.findById({ _id: productId }).populate("image");
+    const findById = Products.findById({ _id: productId })
+      .populate("image")
+      .populate("category");
 
     if (!findById)
       return "The product with id " + productId + " does not exist";

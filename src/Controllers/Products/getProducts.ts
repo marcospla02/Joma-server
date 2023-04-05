@@ -10,7 +10,9 @@ export default async function getProducts(options: any) {
   if (enabled) findOptions.enabled = enabled;
 
   try {
-    const findAllProducts = await Products.find(findOptions).populate("image");
+    const findAllProducts = await Products.find(findOptions)
+      .populate("image")
+      .populate("category");
 
     if (!findAllProducts.length) throw new Error("Product not found");
 

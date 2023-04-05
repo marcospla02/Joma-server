@@ -19,6 +19,7 @@ const createProduct = (props) => __awaiter(void 0, void 0, void 0, function* () 
             stock: props.stock,
             enabled: props.enabled,
             image: props.image,
+            category: props.category,
         });
         return newProduct;
     }
