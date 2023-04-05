@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/", async (req, res) => {
   try {
-    const products = await getProducts();
+    const products = await getProducts(req.query);
 
     if (products === "Product not found")
       res.status(404).send("Product not found");

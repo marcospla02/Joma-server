@@ -5,6 +5,7 @@ export { default as Image } from "./Image/Image";
 export { default as PostImage } from "./Image/PostImage";
 export { default as deleteImage } from "./Image/deleteImage";
 export { default as DeletePrd } from "./Products/DeletePrd";
+export { default as Detail } from "./Products/Detail";
 export { default as Products } from "./Products/Products";
 export { default as RouteCreateP } from "./Products/RouteCreateP";
 export { default as RouteCreateUser } from "./User/RouteCreateUser";

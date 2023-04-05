@@ -13,6 +13,7 @@ import {
   Category,
   RouteDltCtg,
   RoutePostCtg,
+  Detail,
 } from ".";
 
 const router = Router();
@@ -22,6 +23,7 @@ router.use("/createUser", RouteCreateUser);
 router.use("/deleteUser", deleteUser);
 
 router.use("/products", Products);
+router.use("/detail", Detail);
 router.use("/postPt", RouteCreateP);
 router.use("/deletePt", DeletePrd);
 

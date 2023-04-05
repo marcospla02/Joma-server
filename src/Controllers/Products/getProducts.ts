@@ -1,8 +1,16 @@
 import { Products } from "../../db";
 
-export default async function getProducts() {
+export default async function getProducts(options: any) {
+  const { name, enabled } = options;
+
+  const findOptions: any = {};
+
+  if (name) findOptions.name = new RegExp(name, "i");
+
+  if (enabled) findOptions.enabled = enabled;
+
   try {
-    const findAllProducts = await Products.find({});
+    const findAllProducts = await Products.find(findOptions).populate("image");
 
     if (!findAllProducts.length) throw new Error("Product not found");
 

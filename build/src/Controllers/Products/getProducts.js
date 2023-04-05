@@ -10,10 +10,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../../db");
-function getProducts() {
+function getProducts(options) {
     return __awaiter(this, void 0, void 0, function* () {
+        const { name, enabled } = options;
+        const findOptions = {};
+        if (name)
+            findOptions.name = new RegExp(name, "i");
+        if (enabled)
+            findOptions.enabled = enabled;
         try {
-            const findAllProducts = yield db_1.Products.find({});
+            const findAllProducts = yield db_1.Products.find(findOptions).populate("image");
             if (!findAllProducts.length)
                 throw new Error("Product not found");
             return findAllProducts;

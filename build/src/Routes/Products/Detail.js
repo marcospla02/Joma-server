@@ -12,25 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const Controllers_1 = require("../../Controllers");
 const router = (0, express_1.Router)();
-router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const products = yield (0, Controllers_1.getProducts)(req.query);
-        if (products === "Product not found")
-            res.status(404).send("Product not found");
-        else
-            res.send(products);
-    }
-    catch (error) {
-        res.send(error.message);
-    }
-}));
-router.put("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/:_id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { _id } = req.params;
-        const body = req.body;
-        const updatePrt = yield (0, Controllers_1.updateProduct)(_id, body);
-        console.log("soy update:", updatePrt);
-        res.send(updatePrt);
+        const products = yield (0, Controllers_1.getProductById)(_id);
+        res.send(products);
     }
     catch (error) {
         res.send(error.message);

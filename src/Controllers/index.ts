@@ -8,6 +8,7 @@ export { default as postImage } from "./Image/postImage";
 export { default as updateImage } from "./Image/updateImage";
 export { default as CreateProduct } from "./Products/CreateProduct";
 export { default as deleteProduct } from "./Products/deleteProduct";
+export { default as getProductById } from "./Products/getProductById";
 export { default as getProducts } from "./Products/getProducts";
 export { default as updateProduct } from "./Products/updateProduct";
 export { default as CreateUser } from "./User/CreateUser";

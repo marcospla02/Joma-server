@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateUser = exports.getUsers = exports.deleteUser = exports.CreateUser = exports.updateProduct = exports.getProducts = exports.deleteProduct = exports.CreateProduct = exports.updateImage = exports.postImage = exports.getImage = exports.deleteImage = exports.getCategory = exports.UpdateCtg = exports.DeleteCtg = exports.CreateCtg = void 0;
+exports.updateUser = exports.getUsers = exports.deleteUser = exports.CreateUser = exports.updateProduct = exports.getProducts = exports.getProductById = exports.deleteProduct = exports.CreateProduct = exports.updateImage = exports.postImage = exports.getImage = exports.deleteImage = exports.getCategory = exports.UpdateCtg = exports.DeleteCtg = exports.CreateCtg = void 0;
 var CreateCtg_1 = require("./Category/CreateCtg");
 Object.defineProperty(exports, "CreateCtg", { enumerable: true, get: function () { return __importDefault(CreateCtg_1).default; } });
 var DeleteCtg_1 = require("./Category/DeleteCtg");
@@ -24,6 +24,8 @@ var CreateProduct_1 = require("./Products/CreateProduct");
 Object.defineProperty(exports, "CreateProduct", { enumerable: true, get: function () { return __importDefault(CreateProduct_1).default; } });
 var deleteProduct_1 = require("./Products/deleteProduct");
 Object.defineProperty(exports, "deleteProduct", { enumerable: true, get: function () { return __importDefault(deleteProduct_1).default; } });
+var getProductById_1 = require("./Products/getProductById");
+Object.defineProperty(exports, "getProductById", { enumerable: true, get: function () { return __importDefault(getProductById_1).default; } });
 var getProducts_1 = require("./Products/getProducts");
 Object.defineProperty(exports, "getProducts", { enumerable: true, get: function () { return __importDefault(getProducts_1).default; } });
 var updateProduct_1 = require("./Products/updateProduct");
