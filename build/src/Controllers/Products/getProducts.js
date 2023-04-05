@@ -12,12 +12,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../../db");
 function getProducts(options) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { name, enabled } = options;
+        const { name, enabled, category } = options;
         const findOptions = {};
         if (name)
             findOptions.name = new RegExp(name, "i");
         if (enabled)
             findOptions.enabled = enabled;
+        if (category) {
+            try {
+                const categoryFind = yield db_1.Category.findOne({ name: category });
+                if (categoryFind)
+                    findOptions.category = categoryFind._id;
+            }
+            catch (error) {
+                return error.message;
+            }
+        }
         try {
             const findAllProducts = yield db_1.Products.find(findOptions)
                 .populate("image")
