@@ -10,10 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("../../db");
-function createCtg(name) {
+function CreateCtg(body) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const createCtg = yield db_1.Category.create(name.toLowerCase());
+            let { name } = body;
+            if (name)
+                name = name.toLowerCase();
+            const createCtg = yield db_1.Category.create({ name: name });
             return createCtg;
         }
         catch (error) {
@@ -21,4 +24,4 @@ function createCtg(name) {
         }
     });
 }
-exports.default = createCtg;
+exports.default = CreateCtg;

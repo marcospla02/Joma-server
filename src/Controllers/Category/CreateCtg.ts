@@ -1,8 +1,15 @@
 import { Category } from "../../db";
 
-export default async function createCtg(name: string) {
+interface Body {
+  name: string;
+}
+
+export default async function CreateCtg(body: Body) {
   try {
-    const createCtg = await Category.create(name.toLowerCase());
+    let { name } = body;
+    if (name) name = name.toLowerCase();
+
+    const createCtg = await Category.create({ name: name });
 
     return createCtg;
   } catch (error: any) {

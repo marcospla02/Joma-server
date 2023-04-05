@@ -17,13 +17,16 @@ function updateImage(_id, body) {
         let { name } = body;
         if (!mongodb_1.ObjectId.isValid(_id))
             throw new Error("invalid image id");
-        if (name && typeof name !== "string")
-            throw new Error("name cannot be empty and must be a text type");
+        if (name) {
+            if (typeof name !== "string")
+                throw new Error("name cannot be empty and must be a text type");
+            name = name.toLowerCase();
+        }
         if (url && typeof url !== "string")
             throw new Error("url cannot be empty and must be a type text type");
         try {
             const update = {
-                name: name.toLowerCase(),
+                name,
                 url,
             };
             const findImg = yield db_1.Image.findById({ _id }); // object literal

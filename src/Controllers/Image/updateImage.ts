@@ -8,15 +8,18 @@ export default async function updateImage(_id: string, body: IntImage) {
 
   if (!ObjectId.isValid(_id)) throw new Error("invalid image id");
 
-  if (name && typeof name !== "string")
-    throw new Error("name cannot be empty and must be a text type");
+  if (name) {
+    if (typeof name !== "string")
+      throw new Error("name cannot be empty and must be a text type");
+    name = name.toLowerCase();
+  }
 
   if (url && typeof url !== "string")
     throw new Error("url cannot be empty and must be a type text type");
 
   try {
     const update = {
-      name: name.toLowerCase(),
+      name,
       url,
     };
 
